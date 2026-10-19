@@ -235,12 +235,14 @@ def _fetch(provider):
         headers = {'anthropic-beta': 'oauth-2025-04-20'}
     else:
         tokens = auth.get('tokens') or {}
+        if not isinstance(tokens, dict):
+            return {'ok': False, 'error': 'Sign in to Codex', 'retry': 300}
         token = tokens.get('access_token') or auth.get('access_token')
         url = 'https://chatgpt.com/backend-api/codex/usage'
         headers = {}
         if tokens.get('account_id'):
             headers['ChatGPT-Account-Id'] = tokens['account_id']
-    if not token:
+    if not isinstance(token, str) or not token.strip():
         return {'ok': False, 'error': 'Sign in to ' + provider.title(), 'retry': 60}
     headers.update({'Authorization': 'Bearer ' + token, 'User-Agent': 'usage-widget/2.0'})
     try:

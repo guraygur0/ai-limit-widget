@@ -72,7 +72,7 @@ Automated tests do not prove a real Windows reboot, a full focus session or all 
 - Desktop layer selection accounts for visible wallpaper WorkerW windows.
 - A 20-second logon delay lets the Windows desktop initialize.
 - Failed process exits retry through Task Scheduler; bounded local crash logs help diagnosis.
-- 50 automated tests passed in this release. These are not a substitute for testing every Windows, account and wallpaper configuration.
+- 54 automated tests passed in this release. These are not a substitute for testing every Windows, account and wallpaper configuration.
 - No analytics or telemetry service is added. Third-party requests are needed only for the widget's documented provider or playback features.
 
 ## The matching set
